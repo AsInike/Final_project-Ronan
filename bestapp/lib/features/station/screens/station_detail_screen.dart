@@ -140,20 +140,42 @@ class _TableBikeCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isAvailable = slot.status == BikeSlotStatus.available;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        children: [
-          Text(
-            isAvailable ? 'Available' : 'Empty',
-            style: AppTextStyles.caption.copyWith(
-              color: isAvailable ? AppColors.available : AppColors.orange,
-              fontWeight: FontWeight.w700,
+    if (isAvailable) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          children: [
+            Text(
+              'Available',
+              style: AppTextStyles.caption.copyWith(
+                color: AppColors.available,
+                fontWeight: FontWeight.w700,
+              ),
             ),
+            const Spacer(),
+            const Icon(Icons.pedal_bike, size: 16),
+          ],
+        ),
+      );
+    }
+
+    return Center(
+      child: Container(
+        width: 22,
+        height: 22,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppColors.orange.withValues(alpha: 0.15),
+          border: Border.all(color: AppColors.orange),
+          borderRadius: BorderRadius.circular(999),
+        ),
+        child: Text(
+          'P',
+          style: AppTextStyles.caption.copyWith(
+            color: AppColors.orange,
+            fontWeight: FontWeight.w800,
           ),
-          const Spacer(),
-          if (isAvailable) const Icon(Icons.pedal_bike, size: 16) else const SizedBox(width: 16),
-        ],
+        ),
       ),
     );
   }
