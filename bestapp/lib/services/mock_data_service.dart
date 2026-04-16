@@ -1,8 +1,92 @@
 import '../models/bike.dart';
+import '../models/pass_plan.dart';
 import '../models/station.dart';
 import '../models/user.dart';
 
 class MockDataService {
+  static List<PassPlan> getPassPlans() {
+    return const [
+      PassPlan(
+        id: 'single-ride',
+        name: 'Single Ride',
+        priceUsd: 3.50,
+        billingCycle: 'One-time',
+        includedRideMinutes: 30,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 2.00,
+        autoRenew: false,
+        description: 'For occasional trips with no subscription commitment.',
+      ),
+      PassPlan(
+        id: 'day-pass',
+        name: 'Day Pass',
+        priceUsd: 11.99,
+        billingCycle: '24 hours',
+        includedRideMinutes: 45,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 2.00,
+        autoRenew: false,
+        description: 'Unlimited rides for one day, up to 45 minutes each ride.',
+      ),
+      PassPlan(
+        id: 'weekly-flex',
+        name: 'Weekly Flex',
+        priceUsd: 24.99,
+        billingCycle: 'Weekly',
+        includedRideMinutes: 45,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 1.50,
+        autoRenew: true,
+        description: 'Balanced plan for tourists and short-term commuters.',
+      ),
+      PassPlan(
+        id: 'monthly-commuter',
+        name: 'Monthly Commuter',
+        priceUsd: 59.99,
+        billingCycle: 'Monthly',
+        includedRideMinutes: 60,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 1.00,
+        autoRenew: true,
+        description: 'Best value for frequent city riders and daily commuting.',
+      ),
+      PassPlan(
+        id: 'annual-member',
+        name: 'Annual Member',
+        priceUsd: 499.00,
+        billingCycle: 'Yearly',
+        includedRideMinutes: 60,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 0.75,
+        autoRenew: true,
+        description: 'Lowest long-term cost per month for regular riders.',
+      ),
+      PassPlan(
+        id: 'student-monthly',
+        name: 'Student Monthly',
+        priceUsd: 39.99,
+        billingCycle: 'Monthly',
+        includedRideMinutes: 45,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 1.00,
+        autoRenew: true,
+        description: 'Discounted commuter plan for verified students.',
+        requiresVerification: true,
+      ),
+      PassPlan(
+        id: 'business-team',
+        name: 'Business Team Pass',
+        priceUsd: 79.99,
+        billingCycle: 'Monthly',
+        includedRideMinutes: 60,
+        unlockFeeUsd: 0,
+        overagePer30MinUsd: 0.90,
+        autoRenew: true,
+        description: 'Corporate-focused plan with flexible commuting benefits.',
+      ),
+    ];
+  }
+
   static List<Station> getStations() {
     return const [
       Station(
@@ -121,7 +205,7 @@ class MockDataService {
       totalDistanceKm: 142.6,
       totalRides: 39,
       co2SavedKg: 31.4,
-      activePass: 'Daily Pass',
+      activePass: 'Monthly Commuter',
       recentTrips: [
         RecentTrip(
           routeName: 'Central Park to Riverfront',

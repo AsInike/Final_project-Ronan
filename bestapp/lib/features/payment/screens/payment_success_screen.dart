@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/widgets/bottom_nav_bar.dart';
@@ -42,7 +41,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                   Text('Payment Successful!', style: AppTextStyles.heading),
                   const SizedBox(height: 4),
                   Text(
-                    'Your ${state.selectedPassType.label} is now active.',
+                    'Your ${state.selectedPassPlan.name} is now active.',
                     style: AppTextStyles.caption,
                   ),
                   const SizedBox(height: 14),
@@ -73,7 +72,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text('Urban Explorer', style: AppTextStyles.heading),
-                        Text('Day Pass', style: AppTextStyles.body),
+                        Text(state.selectedPassPlan.name, style: AppTextStyles.body),
                         const SizedBox(height: 6),
                         Text('\$${state.totalPrice.toStringAsFixed(2)}', style: AppTextStyles.heading),
                       ],

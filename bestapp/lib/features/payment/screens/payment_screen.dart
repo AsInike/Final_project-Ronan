@@ -7,6 +7,7 @@ import '../../../core/constants/text_styles.dart';
 import '../../../core/widgets/bottom_nav_bar.dart';
 import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_button.dart';
+import '../../../models/pass_plan.dart';
 import '../../../routes/app_routes.dart';
 import '../../../services/app_state.dart';
 import '../widgets/payment_card.dart';
@@ -77,6 +78,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
+    final passPlans = state.passPlans.where((plan) => plan.id != 'single-ride').toList();
     final title = _step == 0
         ? 'Choose Ride Type'
         : _step == 1
@@ -89,243 +91,291 @@ class _PaymentScreenState extends State<PaymentScreen> {
         title: title,
         showBackButton: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _StepIndicator(currentStep: _step),
-              const SizedBox(height: 14),
-              if (_step == 0) ...[
-                Text('How do you want to ride?', style: AppTextStyles.titleMedium.copyWith(fontSize: 18)),
-                const SizedBox(height: 4),
-                Text('Choose between one-time ride or a subscription pass.', style: AppTextStyles.caption),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PaymentCard(
-                        title: 'Single Ride',
-                        subtitle: '\$${RidePassType.singleRide.price.toStringAsFixed(2)}',
-                        isSelected: !_isPassFlow,
-                        onTap: () {
-                          setState(() {
-                            _isPassFlow = false;
-                            state.selectPassType(RidePassType.singleRide);
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: PaymentCard(
-                        title: 'Pass',
-                        subtitle: 'Daily / Weekly',
-                        isSelected: _isPassFlow,
-                        onTap: () {
-                          setState(() {
-                            _isPassFlow = true;
-                            state.selectPassType(RidePassType.dailyPass);
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                CustomButton(
-                  label: _isPassFlow ? 'Continue To Pass View' : 'Continue To Payment',
-                  icon: Icons.arrow_forward,
-                  onPressed: () {
-                    setState(() {
-                      _step = _isPassFlow ? 1 : 2;
-                    });
-                  },
-                ),
+      body: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _StepIndicator(currentStep: _step),
+                const SizedBox(height: 14),
+                Expanded(child: _buildStepContent(state, passPlans)),
               ],
-              if (_step == 1) ...[
-                Text('Choose your pass', style: AppTextStyles.titleMedium.copyWith(fontSize: 18)),
-                const SizedBox(height: 4),
-                Text('Select the pass plan before entering payment details.', style: AppTextStyles.caption),
-                const SizedBox(height: 12),
-                PaymentCard(
-                  title: RidePassType.dailyPass.label,
-                  subtitle: '\$${RidePassType.dailyPass.price.toStringAsFixed(2)}',
-                  isSelected: state.selectedPassType == RidePassType.dailyPass,
-                  onTap: () => state.selectPassType(RidePassType.dailyPass),
-                ),
-                const SizedBox(height: 8),
-                PaymentCard(
-                  title: RidePassType.weeklyPass.label,
-                  subtitle: '\$${RidePassType.weeklyPass.price.toStringAsFixed(2)}',
-                  isSelected: state.selectedPassType == RidePassType.weeklyPass,
-                  onTap: () => state.selectPassType(RidePassType.weeklyPass),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        label: 'Back',
-                        icon: Icons.arrow_back,
-                        onPressed: () {
-                          setState(() {
-                            _step = 0;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: CustomButton(
-                        icon: Icons.arrow_forward,
-                        label: 'Continue',
-                        onPressed: () {
-                          setState(() {
-                            _step = 2;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-              if (_step == 2) ...[
-                Row(
-                  children: [
-                    Text('Payment Method', style: AppTextStyles.heading.copyWith(fontSize: 13)),
-                    const Spacer(),
-                    Text(
-                      'Add New',
-                      style: AppTextStyles.caption.copyWith(
-                        color: AppColors.available,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                _buildInputField(
-                  controller: _holderController,
-                  label: 'Card holder name',
-                  validator: (value) => value == null || value.isEmpty ? 'Required' : null,
-                ),
-                const SizedBox(height: 8),
-                _buildInputField(
-                  controller: _numberController,
-                  label: 'Card number',
-                  keyboardType: TextInputType.number,
-                  validator: (value) => value != null && value.replaceAll(' ', '').length >= 12
-                      ? null
-                      : 'Invalid card number',
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildInputField(
-                        controller: _expiryController,
-                        label: 'Expiry date',
-                        validator: (value) => value == null || value.isEmpty ? 'Required' : null,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: _buildInputField(
-                        controller: _cvvController,
-                        label: 'CVV',
-                        keyboardType: TextInputType.number,
-                        validator: (value) => value != null && value.length >= 3 ? null : 'Invalid CVV',
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: _showAbaQrDialog,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFECEFF1),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColors.border),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.qr_code_2, color: AppColors.textPrimary, size: 18),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text('Tap here to pay via ABA', style: AppTextStyles.caption),
-                        ),
-                        const Icon(Icons.chevron_right, color: AppColors.textSecondary, size: 18),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Total Amount', style: AppTextStyles.caption),
-                      Text(
-                        '\$${state.totalPrice.toStringAsFixed(2)}',
-                        style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        label: 'Back',
-                        icon: Icons.arrow_back,
-                        onPressed: () {
-                          setState(() {
-                            _step = _isPassFlow ? 1 : 0;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: CustomButton(
-                        label: 'Pay Now',
-                        icon: Icons.arrow_forward,
-                        onPressed: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            Navigator.pushNamed(context, AppRoutes.paymentSuccess);
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Center(
-                  child: Text(
-                    'Secure encrypted transaction',
-                    style: AppTextStyles.caption.copyWith(fontSize: 10),
-                  ),
-                ),
-              ],
-            ],
+            ),
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: 2,
-        onTap: (index) {
-          state.setCurrentNavIndex(index);
-          AppRoutes.navigateByTab(context, index);
-        },
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (_step == 1) _buildPassStepActionBar(),
+          BottomNavBar(
+            currentIndex: 2,
+            onTap: (index) {
+              state.setCurrentNavIndex(index);
+              AppRoutes.navigateByTab(context, index);
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStepContent(AppState state, List<PassPlan> passPlans) {
+    if (_step == 0) {
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('How do you want to ride?', style: AppTextStyles.titleMedium.copyWith(fontSize: 18)),
+            const SizedBox(height: 4),
+            Text('Choose between one-time ride or a subscription pass.', style: AppTextStyles.caption),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: PaymentCard(
+                    title: 'Single Ride',
+                    subtitle: '\$${AppConstants.singleRidePrice.toStringAsFixed(2)}',
+                    isSelected: !_isPassFlow,
+                    onTap: () {
+                      setState(() {
+                        _isPassFlow = false;
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: PaymentCard(
+                    title: 'Pass',
+                    subtitle: state.selectedPassPlan.billingCycle,
+                    isSelected: _isPassFlow,
+                    onTap: () {
+                      setState(() {
+                        _isPassFlow = true;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            CustomButton(
+              label: _isPassFlow ? 'Continue To Pass View' : 'Continue To Payment',
+              icon: Icons.arrow_forward,
+              onPressed: () {
+                setState(() {
+                  _step = _isPassFlow ? 1 : 2;
+                });
+              },
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (_step == 1) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Choose your pass', style: AppTextStyles.titleMedium.copyWith(fontSize: 18)),
+          const SizedBox(height: 4),
+          Text('Select the pass plan before entering payment details.', style: AppTextStyles.caption),
+          const SizedBox(height: 12),
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.only(bottom: 12),
+              itemCount: passPlans.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                final plan = passPlans[index];
+                return PaymentCard(
+                  title: plan.name,
+                  subtitle: '${plan.billingCycle} - \$${plan.priceUsd.toStringAsFixed(2)}',
+                  isSelected: state.selectedPassPlan.id == plan.id,
+                  onTap: () => state.selectPassPlan(plan),
+                );
+              },
+            ),
+          ),
+        ],
+      );
+    }
+
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text('Payment Method', style: AppTextStyles.heading.copyWith(fontSize: 13)),
+              const Spacer(),
+              Text(
+                'Add New',
+                style: AppTextStyles.caption.copyWith(
+                  color: AppColors.available,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          _buildInputField(
+            controller: _holderController,
+            label: 'Card holder name',
+            validator: (value) => value == null || value.isEmpty ? 'Required' : null,
+          ),
+          const SizedBox(height: 8),
+          _buildInputField(
+            controller: _numberController,
+            label: 'Card number',
+            keyboardType: TextInputType.number,
+            validator: (value) => value != null && value.replaceAll(' ', '').length >= 12
+                ? null
+                : 'Invalid card number',
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(
+                child: _buildInputField(
+                  controller: _expiryController,
+                  label: 'Expiry date',
+                  validator: (value) => value == null || value.isEmpty ? 'Required' : null,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: _buildInputField(
+                  controller: _cvvController,
+                  label: 'CVV',
+                  keyboardType: TextInputType.number,
+                  validator: (value) => value != null && value.length >= 3 ? null : 'Invalid CVV',
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          GestureDetector(
+            onTap: _showAbaQrDialog,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFECEFF1),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.border),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.qr_code_2, color: AppColors.textPrimary, size: 18),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text('Tap here to pay via ABA', style: AppTextStyles.caption),
+                  ),
+                  const Icon(Icons.chevron_right, color: AppColors.textSecondary, size: 18),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Total Amount', style: AppTextStyles.caption),
+                Text(
+                  '\$${(_isPassFlow ? state.totalPrice : AppConstants.singleRidePrice).toStringAsFixed(2)}',
+                  style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          Row(
+            children: [
+              Expanded(
+                child: CustomButton(
+                  label: 'Back',
+                  icon: Icons.arrow_back,
+                  onPressed: () {
+                    setState(() {
+                      _step = _isPassFlow ? 1 : 0;
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: CustomButton(
+                  label: 'Pay Now',
+                  icon: Icons.arrow_forward,
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      Navigator.pushNamed(context, AppRoutes.paymentSuccess);
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Center(
+            child: Text(
+              'Secure encrypted transaction',
+              style: AppTextStyles.caption.copyWith(fontSize: 10),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPassStepActionBar() {
+    return SafeArea(
+      top: false,
+      bottom: false,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+        margin: const EdgeInsets.only(top: 4),
+        decoration: BoxDecoration(
+          color: AppColors.background,
+          border: Border(top: BorderSide(color: AppColors.border.withOpacity(0.5))),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: CustomButton(
+                label: 'Back',
+                icon: Icons.arrow_back,
+                onPressed: () {
+                  setState(() {
+                    _step = 0;
+                  });
+                },
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: CustomButton(
+                icon: Icons.arrow_forward,
+                label: 'Continue',
+                onPressed: () {
+                  setState(() {
+                    _step = 2;
+                  });
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
