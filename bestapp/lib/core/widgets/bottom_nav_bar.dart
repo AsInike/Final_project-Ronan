@@ -39,33 +39,39 @@ class BottomNavBar extends StatelessWidget {
             final item = items[index];
             final bool isActive = currentIndex == index;
             return Expanded(
-              child: GestureDetector(
-                onTap: () => onTap(index),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.symmetric(vertical: 6),
-                  decoration: BoxDecoration(
-                    color: isActive ? AppColors.primary : Colors.transparent,
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        item.icon,
-                        size: 18,
-                        color: AppColors.textPrimary,
-                      ),
-                      const SizedBox(height: 3),
-                      Text(
-                        item.label,
-                        style: AppTextStyles.caption.copyWith(
+              child: Semantics(
+                button: true,
+                selected: isActive,
+                label: 'Navigate to ${item.label} tab',
+                child: GestureDetector(
+                  key: ValueKey('bottom_nav_item_$index'),
+                  onTap: () => onTap(index),
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    decoration: BoxDecoration(
+                      color: isActive ? AppColors.primary : Colors.transparent,
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          item.icon,
+                          size: 18,
                           color: AppColors.textPrimary,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 10,
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 3),
+                        Text(
+                          item.label,
+                          style: AppTextStyles.caption.copyWith(
+                            color: AppColors.textPrimary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

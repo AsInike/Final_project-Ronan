@@ -30,6 +30,7 @@ class StationDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                key: const ValueKey('station_detail_capacity_card'),
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -87,6 +88,7 @@ class StationDetailScreen extends StatelessWidget {
                       ),
                       Expanded(
                         child: ListView.builder(
+                          key: const ValueKey('station_detail_slots_list'),
                           padding: const EdgeInsets.only(bottom: 8),
                           itemCount: totalRows,
                           itemBuilder: (context, row) {
@@ -137,6 +139,7 @@ class StationDetailScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
             child: CustomButton(
+              key: const ValueKey('station_detail_rent_now_button'),
               label: 'Rent Now',
               icon: Icons.electric_bike,
               onPressed: () => Navigator.pushNamed(context, AppRoutes.payment),

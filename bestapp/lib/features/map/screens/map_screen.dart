@@ -162,6 +162,7 @@ class _MapScreenState extends State<MapScreen> {
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: TextField(
+                          key: const ValueKey('map_search_field'),
                           controller: _searchController,
                           onChanged: (_) => setState(() {}),
                           decoration: InputDecoration(
@@ -200,6 +201,7 @@ class _MapScreenState extends State<MapScreen> {
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: Text(
+                          key: const ValueKey('map_station_count_label'),
                           '${stations.length} stations',
                           style: AppTextStyles.caption.copyWith(fontWeight: FontWeight.w700),
                         ),

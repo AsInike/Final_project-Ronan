@@ -100,7 +100,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _StepIndicator(currentStep: _step),
+                _StepIndicator(
+                  key: const ValueKey('payment_step_indicator'),
+                  currentStep: _step,
+                ),
                 const SizedBox(height: 14),
                 Expanded(child: _buildStepContent(state, passPlans)),
               ],
@@ -138,6 +141,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               children: [
                 Expanded(
                   child: PaymentCard(
+                    key: const ValueKey('payment_single_ride_option'),
                     title: 'Single Ride',
                     subtitle: '\$${AppConstants.singleRidePrice.toStringAsFixed(2)}',
                     isSelected: !_isPassFlow,
@@ -151,6 +155,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: PaymentCard(
+                    key: const ValueKey('payment_pass_option'),
                     title: 'Pass',
                     subtitle: state.selectedPassPlan.billingCycle,
                     isSelected: _isPassFlow,
@@ -165,6 +170,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             const SizedBox(height: 16),
             CustomButton(
+              key: const ValueKey('payment_continue_from_ride_type'),
               label: _isPassFlow ? 'Continue To Pass View' : 'Continue To Payment',
               icon: Icons.arrow_forward,
               onPressed: () {
@@ -194,6 +200,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               itemBuilder: (context, index) {
                 final plan = passPlans[index];
                 return PaymentCard(
+                  key: ValueKey('payment_plan_${plan.id}'),
                   title: plan.name,
                   subtitle: '${plan.billingCycle} - \$${plan.priceUsd.toStringAsFixed(2)}',
                   isSelected: state.selectedPassPlan.id == plan.id,
@@ -225,12 +232,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
           const SizedBox(height: 8),
           _buildInputField(
+            fieldKey: const ValueKey('payment_card_holder_field'),
             controller: _holderController,
             label: 'Card holder name',
             validator: (value) => value == null || value.isEmpty ? 'Required' : null,
           ),
           const SizedBox(height: 8),
           _buildInputField(
+            fieldKey: const ValueKey('payment_card_number_field'),
             controller: _numberController,
             label: 'Card number',
             keyboardType: TextInputType.number,
@@ -243,6 +252,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             children: [
               Expanded(
                 child: _buildInputField(
+                  fieldKey: const ValueKey('payment_expiry_field'),
                   controller: _expiryController,
                   label: 'Expiry date',
                   validator: (value) => value == null || value.isEmpty ? 'Required' : null,
@@ -251,6 +261,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               const SizedBox(width: 8),
               Expanded(
                 child: _buildInputField(
+                  fieldKey: const ValueKey('payment_cvv_field'),
                   controller: _cvvController,
                   label: 'CVV',
                   keyboardType: TextInputType.number,
@@ -261,6 +272,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
           const SizedBox(height: 10),
           GestureDetector(
+            key: const ValueKey('payment_aba_qr_trigger'),
             onTap: _showAbaQrDialog,
             child: Container(
               width: double.infinity,
@@ -302,6 +314,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             children: [
               Expanded(
                 child: CustomButton(
+                  key: const ValueKey('payment_back_button'),
                   label: 'Back',
                   icon: Icons.arrow_back,
                   onPressed: () {
@@ -314,6 +327,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               const SizedBox(width: 8),
               Expanded(
                 child: CustomButton(
+                  key: const ValueKey('payment_pay_now_button'),
                   label: 'Pay Now',
                   icon: Icons.arrow_forward,
                   onPressed: () {
@@ -353,6 +367,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           children: [
             Expanded(
               child: CustomButton(
+                key: const ValueKey('payment_pass_back_button'),
                 label: 'Back',
                 icon: Icons.arrow_back,
                 onPressed: () {
@@ -365,6 +380,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             const SizedBox(width: 10),
             Expanded(
               child: CustomButton(
+                key: const ValueKey('payment_pass_continue_button'),
                 icon: Icons.arrow_forward,
                 label: 'Continue',
                 onPressed: () {
@@ -381,12 +397,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   Widget _buildInputField({
+    Key? fieldKey,
     required TextEditingController controller,
     required String label,
     required String? Function(String?) validator,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return TextFormField(
+      key: fieldKey,
       controller: controller,
       keyboardType: keyboardType,
       validator: validator,
@@ -406,7 +424,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 }
 
 class _StepIndicator extends StatelessWidget {
-  const _StepIndicator({required this.currentStep});
+  const _StepIndicator({required this.currentStep, super.key});
 
   final int currentStep;
 

@@ -19,28 +19,33 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final button = ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.orange,
-        foregroundColor: Colors.white,
-        disabledBackgroundColor: AppColors.orange.withValues(alpha: 0.35),
-        elevation: 0,
-        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(999),
+    final button = Semantics(
+      button: true,
+      label: label,
+      child: ElevatedButton(
+        key: ValueKey('custom_button_$label'),
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.orange,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor: AppColors.orange.withValues(alpha: 0.35),
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(999),
+          ),
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (icon != null) ...[
-            Icon(icon, size: 18),
-            const SizedBox(width: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) ...[
+              Icon(icon, size: 18),
+              const SizedBox(width: 8),
+            ],
+            Text(label, style: AppTextStyles.button),
           ],
-          Text(label, style: AppTextStyles.button),
-        ],
+        ),
       ),
     );
 
