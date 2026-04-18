@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/app_constants.dart';
@@ -227,16 +228,35 @@ class _PaymentScreenState extends State<PaymentScreen> {
           _buildInputField(
             controller: _holderController,
             label: 'Card holder name',
-            validator: (value) => value == null || value.isEmpty ? 'Required' : null,
+            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z ]'))],
+            validator: (value) {
+              if (value == null || value.trim().isEmpty) {
+                return 'Required';
+              }
+              if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) {
+                return 'Letters only';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 8),
           _buildInputField(
             controller: _numberController,
             label: 'Card number',
             keyboardType: TextInputType.number,
-            validator: (value) => value != null && value.replaceAll(' ', '').length >= 12
-                ? null
-                : 'Invalid card number',
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(16),
+            ],
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Required';
+              }
+              if (!RegExp(r'^\d{12,16}$').hasMatch(value)) {
+                return 'Invalid card number';
+              }
+              return null;
+            },
           ),
           const SizedBox(height: 8),
           Row(
@@ -245,7 +265,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 child: _buildInputField(
                   controller: _expiryController,
                   label: 'Expiry date',
-                  validator: (value) => value == null || value.isEmpty ? 'Required' : null,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(4),
+                    _ExpiryDateInputFormatter(),
+                  ],
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    if (!RegExp(r'^\d{2}/\d{2}$').hasMatch(value)) {
+                      return 'Invalid expiry';
+                    }
+                    return null;
+                  },
                 ),
               ),
               const SizedBox(width: 8),
@@ -254,7 +288,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   controller: _cvvController,
                   label: 'CVV',
                   keyboardType: TextInputType.number,
-                  validator: (value) => value != null && value.length >= 3 ? null : 'Invalid CVV',
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(3),
+                  ],
+                  validator: (value) => RegExp(r'^\d{3}$').hasMatch(value ?? '') ? null : 'Invalid CVV',
                 ),
               ),
             ],
@@ -385,10 +423,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
     required String label,
     required String? Function(String?) validator,
     TextInputType keyboardType = TextInputType.text,
+    List<TextInputFormatter>? inputFormatters,
   }) {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
       validator: validator,
       decoration: InputDecoration(
         labelText: label,
@@ -401,6 +441,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
           borderSide: BorderSide.none,
         ),
       ),
+    );
+  }
+}
+
+class _ExpiryDateInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    final digitsOnly = newValue.text.replaceAll('/', '');
+    final buffer = StringBuffer();
+
+    for (int i = 0; i < digitsOnly.length && i < 4; i++) {
+      if (i == 2) {
+        buffer.write('/');
+      }
+      buffer.write(digitsOnly[i]);
+    }
+
+    final formatted = buffer.toString();
+    return TextEditingValue(
+      text: formatted,
+      selection: TextSelection.collapsed(offset: formatted.length),
     );
   }
 }

@@ -171,7 +171,7 @@ class MockDataService {
 
   static UrbanUser getUser() {
     return const UrbanUser(
-      name: 'Ronan Miller',
+      name: 'Ronan THE BEST',
       avatarUrl: '',
       totalDistanceKm: 142.6,
       totalRides: 39,
