@@ -5,6 +5,7 @@ class AppColors {
   static const Color surface = Color(0xFFFFFFFF);
   static const Color primary = Color(0xFFB9F400);
   static const Color orange = Color(0xFFFF6A00);
+  static const Color lightOrange = Color(0xFFFFC78F);
   static const Color accent = orange;
   static const Color deepGreen = Color(0xFF12210D);
   static const Color textPrimary = Color(0xFF1B1D1E);

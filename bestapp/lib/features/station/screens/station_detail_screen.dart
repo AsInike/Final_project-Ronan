@@ -17,6 +17,7 @@ class StationDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<AppState>();
     final station = state.selectedStation;
+    final hasAvailableBikes = station.availableBikes > 0;
     final totalRows = (station.slots.length + 1) ~/ 2;
 
     return Scaffold(
@@ -139,7 +140,9 @@ class StationDetailScreen extends StatelessWidget {
             child: CustomButton(
               label: 'Rent Now',
               icon: Icons.electric_bike,
-              onPressed: () => Navigator.pushNamed(context, AppRoutes.payment),
+              onPressed: hasAvailableBikes
+                  ? () => Navigator.pushNamed(context, AppRoutes.payment)
+                  : null,
             ),
           ),
           BottomNavBar(

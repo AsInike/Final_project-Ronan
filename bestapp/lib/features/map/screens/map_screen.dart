@@ -114,7 +114,9 @@ class _MapScreenState extends State<MapScreen> {
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: AppColors.primary,
+                                          color: station.availableBikes == 0
+                                              ? AppColors.lightOrange
+                                              : AppColors.primary,
                                           borderRadius: BorderRadius.circular(999),
                                           boxShadow: const [
                                             BoxShadow(

@@ -125,6 +125,7 @@ class MockDataService {
       _StationSeed('st32', 'Hayes Valley Stop', 'Hayes St & Gough', 37.7764, -122.4231, 18, 8),
       _StationSeed('st33', 'Civic Center West', 'Fulton St & Larkin', 37.7799, -122.4176, 16, 7),
       _StationSeed('st34', 'Pier 39 Bikes', 'Beach St & The Embarcadero', 37.8087, -122.4098, 24, 12),
+      _StationSeed('st35', 'Zero Bike Terminal', 'Jean Jaures & Canal', 43.6123, 1.4498, 40, 0),
     ];
 
     final random = Random();
