@@ -5,10 +5,16 @@ enum BikeSlotStatus {
 
 class BikeSlotModel {
   const BikeSlotModel({
+    required this.id,
+    required this.stationId,
     required this.index,
     required this.status,
   });
 
+  final String id;
+  final String stationId;
   final int index;
   final BikeSlotStatus status;
+
+  bool get isAvailable => status == BikeSlotStatus.available;
 }

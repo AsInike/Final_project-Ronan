@@ -1,0 +1,4835 @@
+{
+  "passPlans": [
+    {
+      "id": "single-ride",
+      "name": "Single Ride",
+      "priceUsd": 3.5,
+      "billingCycle": "One-time",
+      "includedRideMinutes": 30,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 2,
+      "autoRenew": false,
+      "description": "For occasional trips with no subscription commitment."
+    },
+    {
+      "id": "day-pass",
+      "name": "Day Pass",
+      "priceUsd": 11.99,
+      "billingCycle": "24 hours",
+      "includedRideMinutes": 45,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 2,
+      "autoRenew": false,
+      "description": "Unlimited rides for one day, up to 45 minutes each ride."
+    },
+    {
+      "id": "weekly-flex",
+      "name": "Weekly Flex",
+      "priceUsd": 24.99,
+      "billingCycle": "Weekly",
+      "includedRideMinutes": 45,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 1.5,
+      "autoRenew": true,
+      "description": "Balanced plan for tourists and short-term commuters."
+    },
+    {
+      "id": "monthly-commuter",
+      "name": "Monthly Commuter",
+      "priceUsd": 59.99,
+      "billingCycle": "Monthly",
+      "includedRideMinutes": 60,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 1,
+      "autoRenew": true,
+      "description": "Best value for frequent city riders and daily commuting."
+    },
+    {
+      "id": "annual-member",
+      "name": "Annual Member",
+      "priceUsd": 499,
+      "billingCycle": "Yearly",
+      "includedRideMinutes": 60,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 0.75,
+      "autoRenew": true,
+      "description": "Lowest long-term cost per month for regular riders."
+    },
+    {
+      "id": "student-monthly",
+      "name": "Student Monthly",
+      "priceUsd": 39.99,
+      "billingCycle": "Monthly",
+      "includedRideMinutes": 45,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 1,
+      "autoRenew": true,
+      "description": "Discounted commuter plan for verified students.",
+      "requiresVerification": true
+    },
+    {
+      "id": "business-team",
+      "name": "Business Team Pass",
+      "priceUsd": 79.99,
+      "billingCycle": "Monthly",
+      "includedRideMinutes": 60,
+      "unlockFeeUsd": 0,
+      "overagePer30MinUsd": 0.9,
+      "autoRenew": true,
+      "description": "Corporate-focused plan with flexible commuting benefits."
+    }
+  ],
+  "stations": [
+    {
+      "id": "st1",
+      "name": "Central Park Hub",
+      "address": "12 Green Ave, Downtown",
+      "latitude": 43.6045,
+      "longitude": 1.444
+    },
+    {
+      "id": "st2",
+      "name": "Riverfront Station",
+      "address": "58 Harbor Lane, Midtown",
+      "latitude": 43.6008,
+      "longitude": 1.4392
+    },
+    {
+      "id": "st3",
+      "name": "Campus Exchange",
+      "address": "201 College St, Uptown",
+      "latitude": 43.6159,
+      "longitude": 1.4547
+    },
+    {
+      "id": "st4",
+      "name": "Sunset Market Stop",
+      "address": "77 Sunset Blvd, West End",
+      "latitude": 43.5967,
+      "longitude": 1.4304
+    },
+    {
+      "id": "st5",
+      "name": "Union Square Point",
+      "address": "350 Market St, Downtown",
+      "latitude": 43.6088,
+      "longitude": 1.4479
+    },
+    {
+      "id": "st6",
+      "name": "Harbor View Dock",
+      "address": "18 Bay Front, Embarcadero",
+      "latitude": 43.6117,
+      "longitude": 1.4615
+    },
+    {
+      "id": "st7",
+      "name": "City Hall Bikes",
+      "address": "1 Civic Center Plaza",
+      "latitude": 43.6041,
+      "longitude": 1.4328
+    },
+    {
+      "id": "st8",
+      "name": "Mission Plaza Rack",
+      "address": "245 Mission St",
+      "latitude": 43.6079,
+      "longitude": 1.4524
+    },
+    {
+      "id": "st9",
+      "name": "SoMa Central",
+      "address": "600 Howard St, SoMa",
+      "latitude": 43.5997,
+      "longitude": 1.4571
+    },
+    {
+      "id": "st10",
+      "name": "Market Street East",
+      "address": "901 Market St",
+      "latitude": 43.6033,
+      "longitude": 1.4698
+    },
+    {
+      "id": "st11",
+      "name": "Golden Gate Park East",
+      "address": "1010 Stanyan St",
+      "latitude": 43.5908,
+      "longitude": 1.4386
+    },
+    {
+      "id": "st12",
+      "name": "Presidio Gate",
+      "address": "2100 Presidio Blvd",
+      "latitude": 43.6252,
+      "longitude": 1.4174
+    },
+    {
+      "id": "st13",
+      "name": "Ferry Building Stand",
+      "address": "1 Ferry Building",
+      "latitude": 43.6027,
+      "longitude": 1.4431
+    },
+    {
+      "id": "st14",
+      "name": "North Beach Corner",
+      "address": "801 Columbus Ave",
+      "latitude": 43.6103,
+      "longitude": 1.4389
+    },
+    {
+      "id": "st15",
+      "name": "Chinatown Cross",
+      "address": "620 Grant Ave",
+      "latitude": 43.6148,
+      "longitude": 1.4448
+    },
+    {
+      "id": "st16",
+      "name": "Financial District Hub",
+      "address": "405 Montgomery St",
+      "latitude": 43.6069,
+      "longitude": 1.4462
+    },
+    {
+      "id": "st17",
+      "name": "Castro Station",
+      "address": "18th St & Castro",
+      "latitude": 43.5899,
+      "longitude": 1.4473
+    },
+    {
+      "id": "st18",
+      "name": "Noe Valley Bikes",
+      "address": "24th St & Sanchez",
+      "latitude": 43.5847,
+      "longitude": 1.4411
+    },
+    {
+      "id": "st19",
+      "name": "Potrero Junction",
+      "address": "16th St & 3rd St",
+      "latitude": 43.5972,
+      "longitude": 1.4689
+    },
+    {
+      "id": "st20",
+      "name": "Dogpatch Pier",
+      "address": "22nd St & Illinois",
+      "latitude": 43.5924,
+      "longitude": 1.4762
+    },
+    {
+      "id": "st21",
+      "name": "Ocean Beach Stop",
+      "address": "Great Hwy & Balboa",
+      "latitude": 43.5681,
+      "longitude": 1.3917
+    },
+    {
+      "id": "st22",
+      "name": "Inner Sunset Point",
+      "address": "9th Ave & Irving",
+      "latitude": 43.6001,
+      "longitude": 1.4215
+    },
+    {
+      "id": "st23",
+      "name": "Bernal Heights Rack",
+      "address": "Cortland Ave & Bennington",
+      "latitude": 43.5792,
+      "longitude": 1.4308
+    },
+    {
+      "id": "st24",
+      "name": "Excelsior Hub",
+      "address": "Mission St & Ocean Ave",
+      "latitude": 43.5716,
+      "longitude": 1.4583
+    },
+    {
+      "id": "st25",
+      "name": "Balboa Park Transit",
+      "address": "Balboa Park BART",
+      "latitude": 43.5664,
+      "longitude": 1.4527
+    },
+    {
+      "id": "st26",
+      "name": "Glen Park Village",
+      "address": "Diamond St & Bosworth",
+      "latitude": 43.5858,
+      "longitude": 1.4516
+    },
+    {
+      "id": "st27",
+      "name": "Twin Peaks Base",
+      "address": "Portola Dr & Twin Peaks Blvd",
+      "latitude": 43.5763,
+      "longitude": 1.4198
+    },
+    {
+      "id": "st28",
+      "name": "Lakeshore Center",
+      "address": "Sloat Blvd & 19th Ave",
+      "latitude": 43.5617,
+      "longitude": 1.4049
+    },
+    {
+      "id": "st29",
+      "name": "West Portal Link",
+      "address": "West Portal Ave & Ulloa",
+      "latitude": 43.5754,
+      "longitude": 1.4091
+    },
+    {
+      "id": "st30",
+      "name": "Japan Town Plaza",
+      "address": "Post St & Webster",
+      "latitude": 43.6121,
+      "longitude": 1.4334
+    },
+    {
+      "id": "st31",
+      "name": "Fillmore Street Hub",
+      "address": "Fillmore St & Geary",
+      "latitude": 43.6084,
+      "longitude": 1.4282
+    },
+    {
+      "id": "st32",
+      "name": "Hayes Valley Stop",
+      "address": "Hayes St & Gough",
+      "latitude": 43.6022,
+      "longitude": 1.4349
+    },
+    {
+      "id": "st33",
+      "name": "Civic Center West",
+      "address": "Fulton St & Larkin",
+      "latitude": 43.6095,
+      "longitude": 1.4444
+    },
+    {
+      "id": "st34",
+      "name": "Pier 39 Bikes",
+      "address": "Beach St & The Embarcadero",
+      "latitude": 43.6049,
+      "longitude": 1.4512
+    },
+    {
+      "id": "st35",
+      "name": "Zero Bike Terminal",
+      "address": "Jean Jaures & Canal",
+      "latitude": 43.6123,
+      "longitude": 1.4498
+    }
+  ],
+  "user": {
+    "name": "Ronan THE BEST",
+    "avatarUrl": "",
+    "totalDistanceKm": 142.6,
+    "totalRides": 39,
+    "co2SavedKg": 31.4,
+    "activePass": "Monthly Commuter",
+    "recentTrips": [
+      {
+        "routeName": "Central Park to Riverfront",
+        "date": "Apr 07, 2026",
+        "distanceKm": 4.2,
+        "cost": 2.5
+      },
+      {
+        "routeName": "University Loop",
+        "date": "Apr 05, 2026",
+        "distanceKm": 7.8,
+        "cost": 9.99
+      },
+      {
+        "routeName": "Sunset District Ride",
+        "date": "Apr 02, 2026",
+        "distanceKm": 3.4,
+        "cost": 2.5
+      }
+    ]
+  },
+  "bikes": [
+    {
+      "id": "st1-bike-001",
+      "stationId": "st1",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-002",
+      "stationId": "st1",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-003",
+      "stationId": "st1",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-004",
+      "stationId": "st1",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-005",
+      "stationId": "st1",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-006",
+      "stationId": "st1",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-007",
+      "stationId": "st1",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-008",
+      "stationId": "st1",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-009",
+      "stationId": "st1",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-010",
+      "stationId": "st1",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-011",
+      "stationId": "st1",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-012",
+      "stationId": "st1",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st1-bike-013",
+      "stationId": "st1",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-014",
+      "stationId": "st1",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-015",
+      "stationId": "st1",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-016",
+      "stationId": "st1",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-017",
+      "stationId": "st1",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-018",
+      "stationId": "st1",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-019",
+      "stationId": "st1",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st1-bike-020",
+      "stationId": "st1",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-001",
+      "stationId": "st2",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-002",
+      "stationId": "st2",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-003",
+      "stationId": "st2",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-004",
+      "stationId": "st2",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-005",
+      "stationId": "st2",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-006",
+      "stationId": "st2",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-007",
+      "stationId": "st2",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-008",
+      "stationId": "st2",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-009",
+      "stationId": "st2",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st2-bike-010",
+      "stationId": "st2",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-011",
+      "stationId": "st2",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-012",
+      "stationId": "st2",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-013",
+      "stationId": "st2",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-014",
+      "stationId": "st2",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-015",
+      "stationId": "st2",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st2-bike-016",
+      "stationId": "st2",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-001",
+      "stationId": "st3",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st3-bike-002",
+      "stationId": "st3",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st3-bike-003",
+      "stationId": "st3",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st3-bike-004",
+      "stationId": "st3",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st3-bike-005",
+      "stationId": "st3",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st3-bike-006",
+      "stationId": "st3",
+      "index": 6,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-007",
+      "stationId": "st3",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-008",
+      "stationId": "st3",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-009",
+      "stationId": "st3",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-010",
+      "stationId": "st3",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-011",
+      "stationId": "st3",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st3-bike-012",
+      "stationId": "st3",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-001",
+      "stationId": "st4",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-002",
+      "stationId": "st4",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-003",
+      "stationId": "st4",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-004",
+      "stationId": "st4",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-005",
+      "stationId": "st4",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-006",
+      "stationId": "st4",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-007",
+      "stationId": "st4",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st4-bike-008",
+      "stationId": "st4",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-009",
+      "stationId": "st4",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-010",
+      "stationId": "st4",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-011",
+      "stationId": "st4",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-012",
+      "stationId": "st4",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-013",
+      "stationId": "st4",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st4-bike-014",
+      "stationId": "st4",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-001",
+      "stationId": "st5",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-002",
+      "stationId": "st5",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-003",
+      "stationId": "st5",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-004",
+      "stationId": "st5",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-005",
+      "stationId": "st5",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-006",
+      "stationId": "st5",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-007",
+      "stationId": "st5",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-008",
+      "stationId": "st5",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-009",
+      "stationId": "st5",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-010",
+      "stationId": "st5",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-011",
+      "stationId": "st5",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st5-bike-012",
+      "stationId": "st5",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-013",
+      "stationId": "st5",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-014",
+      "stationId": "st5",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-015",
+      "stationId": "st5",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-016",
+      "stationId": "st5",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-017",
+      "stationId": "st5",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-018",
+      "stationId": "st5",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-019",
+      "stationId": "st5",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-020",
+      "stationId": "st5",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-021",
+      "stationId": "st5",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-022",
+      "stationId": "st5",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-023",
+      "stationId": "st5",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st5-bike-024",
+      "stationId": "st5",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-001",
+      "stationId": "st6",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-002",
+      "stationId": "st6",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-003",
+      "stationId": "st6",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-004",
+      "stationId": "st6",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-005",
+      "stationId": "st6",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-006",
+      "stationId": "st6",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-007",
+      "stationId": "st6",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-008",
+      "stationId": "st6",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st6-bike-009",
+      "stationId": "st6",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-010",
+      "stationId": "st6",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-011",
+      "stationId": "st6",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-012",
+      "stationId": "st6",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-013",
+      "stationId": "st6",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-014",
+      "stationId": "st6",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-015",
+      "stationId": "st6",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-016",
+      "stationId": "st6",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-017",
+      "stationId": "st6",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st6-bike-018",
+      "stationId": "st6",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-001",
+      "stationId": "st7",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-002",
+      "stationId": "st7",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-003",
+      "stationId": "st7",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-004",
+      "stationId": "st7",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-005",
+      "stationId": "st7",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-006",
+      "stationId": "st7",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-007",
+      "stationId": "st7",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-008",
+      "stationId": "st7",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-009",
+      "stationId": "st7",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-010",
+      "stationId": "st7",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-011",
+      "stationId": "st7",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-012",
+      "stationId": "st7",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-013",
+      "stationId": "st7",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-014",
+      "stationId": "st7",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-015",
+      "stationId": "st7",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-016",
+      "stationId": "st7",
+      "index": 16,
+      "isAvailable": true
+    },
+    {
+      "id": "st7-bike-017",
+      "stationId": "st7",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-018",
+      "stationId": "st7",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-019",
+      "stationId": "st7",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-020",
+      "stationId": "st7",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-021",
+      "stationId": "st7",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-022",
+      "stationId": "st7",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-023",
+      "stationId": "st7",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-024",
+      "stationId": "st7",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-025",
+      "stationId": "st7",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-026",
+      "stationId": "st7",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-027",
+      "stationId": "st7",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-028",
+      "stationId": "st7",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-029",
+      "stationId": "st7",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st7-bike-030",
+      "stationId": "st7",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-001",
+      "stationId": "st8",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-002",
+      "stationId": "st8",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-003",
+      "stationId": "st8",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-004",
+      "stationId": "st8",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-005",
+      "stationId": "st8",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-006",
+      "stationId": "st8",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-007",
+      "stationId": "st8",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-008",
+      "stationId": "st8",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-009",
+      "stationId": "st8",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-010",
+      "stationId": "st8",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st8-bike-011",
+      "stationId": "st8",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-012",
+      "stationId": "st8",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-013",
+      "stationId": "st8",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-014",
+      "stationId": "st8",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-015",
+      "stationId": "st8",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-016",
+      "stationId": "st8",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-017",
+      "stationId": "st8",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-018",
+      "stationId": "st8",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-019",
+      "stationId": "st8",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-020",
+      "stationId": "st8",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-021",
+      "stationId": "st8",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st8-bike-022",
+      "stationId": "st8",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-001",
+      "stationId": "st9",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-002",
+      "stationId": "st9",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-003",
+      "stationId": "st9",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-004",
+      "stationId": "st9",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-005",
+      "stationId": "st9",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-006",
+      "stationId": "st9",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-007",
+      "stationId": "st9",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-008",
+      "stationId": "st9",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-009",
+      "stationId": "st9",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-010",
+      "stationId": "st9",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-011",
+      "stationId": "st9",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-012",
+      "stationId": "st9",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-013",
+      "stationId": "st9",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-014",
+      "stationId": "st9",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-015",
+      "stationId": "st9",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st9-bike-016",
+      "stationId": "st9",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-017",
+      "stationId": "st9",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-018",
+      "stationId": "st9",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-019",
+      "stationId": "st9",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-020",
+      "stationId": "st9",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-021",
+      "stationId": "st9",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-022",
+      "stationId": "st9",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-023",
+      "stationId": "st9",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-024",
+      "stationId": "st9",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-025",
+      "stationId": "st9",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-026",
+      "stationId": "st9",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-027",
+      "stationId": "st9",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st9-bike-028",
+      "stationId": "st9",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-001",
+      "stationId": "st10",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-002",
+      "stationId": "st10",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-003",
+      "stationId": "st10",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-004",
+      "stationId": "st10",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-005",
+      "stationId": "st10",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-006",
+      "stationId": "st10",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-007",
+      "stationId": "st10",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-008",
+      "stationId": "st10",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-009",
+      "stationId": "st10",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st10-bike-010",
+      "stationId": "st10",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-011",
+      "stationId": "st10",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-012",
+      "stationId": "st10",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-013",
+      "stationId": "st10",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-014",
+      "stationId": "st10",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-015",
+      "stationId": "st10",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-016",
+      "stationId": "st10",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-017",
+      "stationId": "st10",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-018",
+      "stationId": "st10",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-019",
+      "stationId": "st10",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st10-bike-020",
+      "stationId": "st10",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-001",
+      "stationId": "st11",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-002",
+      "stationId": "st11",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-003",
+      "stationId": "st11",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-004",
+      "stationId": "st11",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-005",
+      "stationId": "st11",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-006",
+      "stationId": "st11",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-007",
+      "stationId": "st11",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-008",
+      "stationId": "st11",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-009",
+      "stationId": "st11",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-010",
+      "stationId": "st11",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-011",
+      "stationId": "st11",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-012",
+      "stationId": "st11",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-013",
+      "stationId": "st11",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-014",
+      "stationId": "st11",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st11-bike-015",
+      "stationId": "st11",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-016",
+      "stationId": "st11",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-017",
+      "stationId": "st11",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-018",
+      "stationId": "st11",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-019",
+      "stationId": "st11",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-020",
+      "stationId": "st11",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-021",
+      "stationId": "st11",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-022",
+      "stationId": "st11",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-023",
+      "stationId": "st11",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-024",
+      "stationId": "st11",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-025",
+      "stationId": "st11",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st11-bike-026",
+      "stationId": "st11",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-001",
+      "stationId": "st12",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-002",
+      "stationId": "st12",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-003",
+      "stationId": "st12",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-004",
+      "stationId": "st12",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-005",
+      "stationId": "st12",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-006",
+      "stationId": "st12",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-007",
+      "stationId": "st12",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-008",
+      "stationId": "st12",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-009",
+      "stationId": "st12",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-010",
+      "stationId": "st12",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-011",
+      "stationId": "st12",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-012",
+      "stationId": "st12",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-013",
+      "stationId": "st12",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-014",
+      "stationId": "st12",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-015",
+      "stationId": "st12",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-016",
+      "stationId": "st12",
+      "index": 16,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-017",
+      "stationId": "st12",
+      "index": 17,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-018",
+      "stationId": "st12",
+      "index": 18,
+      "isAvailable": true
+    },
+    {
+      "id": "st12-bike-019",
+      "stationId": "st12",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-020",
+      "stationId": "st12",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-021",
+      "stationId": "st12",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-022",
+      "stationId": "st12",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-023",
+      "stationId": "st12",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-024",
+      "stationId": "st12",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-025",
+      "stationId": "st12",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-026",
+      "stationId": "st12",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-027",
+      "stationId": "st12",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-028",
+      "stationId": "st12",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-029",
+      "stationId": "st12",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-030",
+      "stationId": "st12",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-031",
+      "stationId": "st12",
+      "index": 31,
+      "isAvailable": false
+    },
+    {
+      "id": "st12-bike-032",
+      "stationId": "st12",
+      "index": 32,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-001",
+      "stationId": "st13",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-002",
+      "stationId": "st13",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-003",
+      "stationId": "st13",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-004",
+      "stationId": "st13",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-005",
+      "stationId": "st13",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-006",
+      "stationId": "st13",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-007",
+      "stationId": "st13",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st13-bike-008",
+      "stationId": "st13",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-009",
+      "stationId": "st13",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-010",
+      "stationId": "st13",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-011",
+      "stationId": "st13",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-012",
+      "stationId": "st13",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-013",
+      "stationId": "st13",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-014",
+      "stationId": "st13",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-015",
+      "stationId": "st13",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st13-bike-016",
+      "stationId": "st13",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-001",
+      "stationId": "st14",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-002",
+      "stationId": "st14",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-003",
+      "stationId": "st14",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-004",
+      "stationId": "st14",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-005",
+      "stationId": "st14",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-006",
+      "stationId": "st14",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st14-bike-007",
+      "stationId": "st14",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-008",
+      "stationId": "st14",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-009",
+      "stationId": "st14",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-010",
+      "stationId": "st14",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-011",
+      "stationId": "st14",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-012",
+      "stationId": "st14",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-013",
+      "stationId": "st14",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st14-bike-014",
+      "stationId": "st14",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-001",
+      "stationId": "st15",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st15-bike-002",
+      "stationId": "st15",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st15-bike-003",
+      "stationId": "st15",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st15-bike-004",
+      "stationId": "st15",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st15-bike-005",
+      "stationId": "st15",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st15-bike-006",
+      "stationId": "st15",
+      "index": 6,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-007",
+      "stationId": "st15",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-008",
+      "stationId": "st15",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-009",
+      "stationId": "st15",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-010",
+      "stationId": "st15",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-011",
+      "stationId": "st15",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st15-bike-012",
+      "stationId": "st15",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-001",
+      "stationId": "st16",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-002",
+      "stationId": "st16",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-003",
+      "stationId": "st16",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-004",
+      "stationId": "st16",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-005",
+      "stationId": "st16",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-006",
+      "stationId": "st16",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-007",
+      "stationId": "st16",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-008",
+      "stationId": "st16",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-009",
+      "stationId": "st16",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-010",
+      "stationId": "st16",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-011",
+      "stationId": "st16",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-012",
+      "stationId": "st16",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-013",
+      "stationId": "st16",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-014",
+      "stationId": "st16",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-015",
+      "stationId": "st16",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-016",
+      "stationId": "st16",
+      "index": 16,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-017",
+      "stationId": "st16",
+      "index": 17,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-018",
+      "stationId": "st16",
+      "index": 18,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-019",
+      "stationId": "st16",
+      "index": 19,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-020",
+      "stationId": "st16",
+      "index": 20,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-021",
+      "stationId": "st16",
+      "index": 21,
+      "isAvailable": true
+    },
+    {
+      "id": "st16-bike-022",
+      "stationId": "st16",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-023",
+      "stationId": "st16",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-024",
+      "stationId": "st16",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-025",
+      "stationId": "st16",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-026",
+      "stationId": "st16",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-027",
+      "stationId": "st16",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-028",
+      "stationId": "st16",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-029",
+      "stationId": "st16",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-030",
+      "stationId": "st16",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-031",
+      "stationId": "st16",
+      "index": 31,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-032",
+      "stationId": "st16",
+      "index": 32,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-033",
+      "stationId": "st16",
+      "index": 33,
+      "isAvailable": false
+    },
+    {
+      "id": "st16-bike-034",
+      "stationId": "st16",
+      "index": 34,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-001",
+      "stationId": "st17",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-002",
+      "stationId": "st17",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-003",
+      "stationId": "st17",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-004",
+      "stationId": "st17",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-005",
+      "stationId": "st17",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-006",
+      "stationId": "st17",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-007",
+      "stationId": "st17",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-008",
+      "stationId": "st17",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-009",
+      "stationId": "st17",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-010",
+      "stationId": "st17",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-011",
+      "stationId": "st17",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st17-bike-012",
+      "stationId": "st17",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-013",
+      "stationId": "st17",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-014",
+      "stationId": "st17",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-015",
+      "stationId": "st17",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-016",
+      "stationId": "st17",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-017",
+      "stationId": "st17",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-018",
+      "stationId": "st17",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-019",
+      "stationId": "st17",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st17-bike-020",
+      "stationId": "st17",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-001",
+      "stationId": "st18",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st18-bike-002",
+      "stationId": "st18",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st18-bike-003",
+      "stationId": "st18",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st18-bike-004",
+      "stationId": "st18",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st18-bike-005",
+      "stationId": "st18",
+      "index": 5,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-006",
+      "stationId": "st18",
+      "index": 6,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-007",
+      "stationId": "st18",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-008",
+      "stationId": "st18",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-009",
+      "stationId": "st18",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st18-bike-010",
+      "stationId": "st18",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-001",
+      "stationId": "st19",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-002",
+      "stationId": "st19",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-003",
+      "stationId": "st19",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-004",
+      "stationId": "st19",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-005",
+      "stationId": "st19",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-006",
+      "stationId": "st19",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-007",
+      "stationId": "st19",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-008",
+      "stationId": "st19",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st19-bike-009",
+      "stationId": "st19",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-010",
+      "stationId": "st19",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-011",
+      "stationId": "st19",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-012",
+      "stationId": "st19",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-013",
+      "stationId": "st19",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-014",
+      "stationId": "st19",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-015",
+      "stationId": "st19",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-016",
+      "stationId": "st19",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-017",
+      "stationId": "st19",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st19-bike-018",
+      "stationId": "st19",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-001",
+      "stationId": "st20",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-002",
+      "stationId": "st20",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-003",
+      "stationId": "st20",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-004",
+      "stationId": "st20",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-005",
+      "stationId": "st20",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-006",
+      "stationId": "st20",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st20-bike-007",
+      "stationId": "st20",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-008",
+      "stationId": "st20",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-009",
+      "stationId": "st20",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-010",
+      "stationId": "st20",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-011",
+      "stationId": "st20",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st20-bike-012",
+      "stationId": "st20",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-001",
+      "stationId": "st21",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-002",
+      "stationId": "st21",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-003",
+      "stationId": "st21",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-004",
+      "stationId": "st21",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-005",
+      "stationId": "st21",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-006",
+      "stationId": "st21",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-007",
+      "stationId": "st21",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-008",
+      "stationId": "st21",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-009",
+      "stationId": "st21",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-010",
+      "stationId": "st21",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-011",
+      "stationId": "st21",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-012",
+      "stationId": "st21",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-013",
+      "stationId": "st21",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-014",
+      "stationId": "st21",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-015",
+      "stationId": "st21",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-016",
+      "stationId": "st21",
+      "index": 16,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-017",
+      "stationId": "st21",
+      "index": 17,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-018",
+      "stationId": "st21",
+      "index": 18,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-019",
+      "stationId": "st21",
+      "index": 19,
+      "isAvailable": true
+    },
+    {
+      "id": "st21-bike-020",
+      "stationId": "st21",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-021",
+      "stationId": "st21",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-022",
+      "stationId": "st21",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-023",
+      "stationId": "st21",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-024",
+      "stationId": "st21",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-025",
+      "stationId": "st21",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-026",
+      "stationId": "st21",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-027",
+      "stationId": "st21",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-028",
+      "stationId": "st21",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-029",
+      "stationId": "st21",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-030",
+      "stationId": "st21",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-031",
+      "stationId": "st21",
+      "index": 31,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-032",
+      "stationId": "st21",
+      "index": 32,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-033",
+      "stationId": "st21",
+      "index": 33,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-034",
+      "stationId": "st21",
+      "index": 34,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-035",
+      "stationId": "st21",
+      "index": 35,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-036",
+      "stationId": "st21",
+      "index": 36,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-037",
+      "stationId": "st21",
+      "index": 37,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-038",
+      "stationId": "st21",
+      "index": 38,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-039",
+      "stationId": "st21",
+      "index": 39,
+      "isAvailable": false
+    },
+    {
+      "id": "st21-bike-040",
+      "stationId": "st21",
+      "index": 40,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-001",
+      "stationId": "st22",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-002",
+      "stationId": "st22",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-003",
+      "stationId": "st22",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-004",
+      "stationId": "st22",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-005",
+      "stationId": "st22",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-006",
+      "stationId": "st22",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-007",
+      "stationId": "st22",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-008",
+      "stationId": "st22",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-009",
+      "stationId": "st22",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-010",
+      "stationId": "st22",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-011",
+      "stationId": "st22",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-012",
+      "stationId": "st22",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st22-bike-013",
+      "stationId": "st22",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-014",
+      "stationId": "st22",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-015",
+      "stationId": "st22",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-016",
+      "stationId": "st22",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-017",
+      "stationId": "st22",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-018",
+      "stationId": "st22",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-019",
+      "stationId": "st22",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-020",
+      "stationId": "st22",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-021",
+      "stationId": "st22",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-022",
+      "stationId": "st22",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-023",
+      "stationId": "st22",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st22-bike-024",
+      "stationId": "st22",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-001",
+      "stationId": "st23",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-002",
+      "stationId": "st23",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-003",
+      "stationId": "st23",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-004",
+      "stationId": "st23",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-005",
+      "stationId": "st23",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-006",
+      "stationId": "st23",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-007",
+      "stationId": "st23",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st23-bike-008",
+      "stationId": "st23",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-009",
+      "stationId": "st23",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-010",
+      "stationId": "st23",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-011",
+      "stationId": "st23",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-012",
+      "stationId": "st23",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-013",
+      "stationId": "st23",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-014",
+      "stationId": "st23",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-015",
+      "stationId": "st23",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st23-bike-016",
+      "stationId": "st23",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-001",
+      "stationId": "st24",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-002",
+      "stationId": "st24",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-003",
+      "stationId": "st24",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-004",
+      "stationId": "st24",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-005",
+      "stationId": "st24",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-006",
+      "stationId": "st24",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-007",
+      "stationId": "st24",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-008",
+      "stationId": "st24",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-009",
+      "stationId": "st24",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st24-bike-010",
+      "stationId": "st24",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-011",
+      "stationId": "st24",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-012",
+      "stationId": "st24",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-013",
+      "stationId": "st24",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-014",
+      "stationId": "st24",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-015",
+      "stationId": "st24",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-016",
+      "stationId": "st24",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-017",
+      "stationId": "st24",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-018",
+      "stationId": "st24",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-019",
+      "stationId": "st24",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st24-bike-020",
+      "stationId": "st24",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-001",
+      "stationId": "st25",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-002",
+      "stationId": "st25",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-003",
+      "stationId": "st25",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-004",
+      "stationId": "st25",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-005",
+      "stationId": "st25",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-006",
+      "stationId": "st25",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-007",
+      "stationId": "st25",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-008",
+      "stationId": "st25",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-009",
+      "stationId": "st25",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-010",
+      "stationId": "st25",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st25-bike-011",
+      "stationId": "st25",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-012",
+      "stationId": "st25",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-013",
+      "stationId": "st25",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-014",
+      "stationId": "st25",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-015",
+      "stationId": "st25",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-016",
+      "stationId": "st25",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-017",
+      "stationId": "st25",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-018",
+      "stationId": "st25",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-019",
+      "stationId": "st25",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-020",
+      "stationId": "st25",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-021",
+      "stationId": "st25",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st25-bike-022",
+      "stationId": "st25",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-001",
+      "stationId": "st26",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st26-bike-002",
+      "stationId": "st26",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st26-bike-003",
+      "stationId": "st26",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st26-bike-004",
+      "stationId": "st26",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st26-bike-005",
+      "stationId": "st26",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st26-bike-006",
+      "stationId": "st26",
+      "index": 6,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-007",
+      "stationId": "st26",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-008",
+      "stationId": "st26",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-009",
+      "stationId": "st26",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-010",
+      "stationId": "st26",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-011",
+      "stationId": "st26",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-012",
+      "stationId": "st26",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-013",
+      "stationId": "st26",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st26-bike-014",
+      "stationId": "st26",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-001",
+      "stationId": "st27",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-002",
+      "stationId": "st27",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-003",
+      "stationId": "st27",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-004",
+      "stationId": "st27",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-005",
+      "stationId": "st27",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-006",
+      "stationId": "st27",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-007",
+      "stationId": "st27",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-008",
+      "stationId": "st27",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st27-bike-009",
+      "stationId": "st27",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-010",
+      "stationId": "st27",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-011",
+      "stationId": "st27",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-012",
+      "stationId": "st27",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-013",
+      "stationId": "st27",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-014",
+      "stationId": "st27",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-015",
+      "stationId": "st27",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-016",
+      "stationId": "st27",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-017",
+      "stationId": "st27",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st27-bike-018",
+      "stationId": "st27",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-001",
+      "stationId": "st28",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-002",
+      "stationId": "st28",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-003",
+      "stationId": "st28",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-004",
+      "stationId": "st28",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-005",
+      "stationId": "st28",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-006",
+      "stationId": "st28",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-007",
+      "stationId": "st28",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-008",
+      "stationId": "st28",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-009",
+      "stationId": "st28",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-010",
+      "stationId": "st28",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-011",
+      "stationId": "st28",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-012",
+      "stationId": "st28",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-013",
+      "stationId": "st28",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st28-bike-014",
+      "stationId": "st28",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-015",
+      "stationId": "st28",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-016",
+      "stationId": "st28",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-017",
+      "stationId": "st28",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-018",
+      "stationId": "st28",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-019",
+      "stationId": "st28",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-020",
+      "stationId": "st28",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-021",
+      "stationId": "st28",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-022",
+      "stationId": "st28",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-023",
+      "stationId": "st28",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-024",
+      "stationId": "st28",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-025",
+      "stationId": "st28",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-026",
+      "stationId": "st28",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-027",
+      "stationId": "st28",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st28-bike-028",
+      "stationId": "st28",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-001",
+      "stationId": "st29",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-002",
+      "stationId": "st29",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-003",
+      "stationId": "st29",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-004",
+      "stationId": "st29",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-005",
+      "stationId": "st29",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-006",
+      "stationId": "st29",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st29-bike-007",
+      "stationId": "st29",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-008",
+      "stationId": "st29",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-009",
+      "stationId": "st29",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-010",
+      "stationId": "st29",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-011",
+      "stationId": "st29",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st29-bike-012",
+      "stationId": "st29",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-001",
+      "stationId": "st30",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-002",
+      "stationId": "st30",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-003",
+      "stationId": "st30",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-004",
+      "stationId": "st30",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-005",
+      "stationId": "st30",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-006",
+      "stationId": "st30",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-007",
+      "stationId": "st30",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-008",
+      "stationId": "st30",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-009",
+      "stationId": "st30",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-010",
+      "stationId": "st30",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-011",
+      "stationId": "st30",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st30-bike-012",
+      "stationId": "st30",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-013",
+      "stationId": "st30",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-014",
+      "stationId": "st30",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-015",
+      "stationId": "st30",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-016",
+      "stationId": "st30",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-017",
+      "stationId": "st30",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-018",
+      "stationId": "st30",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-019",
+      "stationId": "st30",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-020",
+      "stationId": "st30",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-021",
+      "stationId": "st30",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-022",
+      "stationId": "st30",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-023",
+      "stationId": "st30",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-024",
+      "stationId": "st30",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-025",
+      "stationId": "st30",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st30-bike-026",
+      "stationId": "st30",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-001",
+      "stationId": "st31",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-002",
+      "stationId": "st31",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-003",
+      "stationId": "st31",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-004",
+      "stationId": "st31",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-005",
+      "stationId": "st31",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-006",
+      "stationId": "st31",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-007",
+      "stationId": "st31",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-008",
+      "stationId": "st31",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-009",
+      "stationId": "st31",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-010",
+      "stationId": "st31",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-011",
+      "stationId": "st31",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-012",
+      "stationId": "st31",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-013",
+      "stationId": "st31",
+      "index": 13,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-014",
+      "stationId": "st31",
+      "index": 14,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-015",
+      "stationId": "st31",
+      "index": 15,
+      "isAvailable": true
+    },
+    {
+      "id": "st31-bike-016",
+      "stationId": "st31",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-017",
+      "stationId": "st31",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-018",
+      "stationId": "st31",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-019",
+      "stationId": "st31",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-020",
+      "stationId": "st31",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-021",
+      "stationId": "st31",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-022",
+      "stationId": "st31",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-023",
+      "stationId": "st31",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-024",
+      "stationId": "st31",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-025",
+      "stationId": "st31",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-026",
+      "stationId": "st31",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-027",
+      "stationId": "st31",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-028",
+      "stationId": "st31",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-029",
+      "stationId": "st31",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st31-bike-030",
+      "stationId": "st31",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-001",
+      "stationId": "st32",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-002",
+      "stationId": "st32",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-003",
+      "stationId": "st32",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-004",
+      "stationId": "st32",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-005",
+      "stationId": "st32",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-006",
+      "stationId": "st32",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-007",
+      "stationId": "st32",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-008",
+      "stationId": "st32",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st32-bike-009",
+      "stationId": "st32",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-010",
+      "stationId": "st32",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-011",
+      "stationId": "st32",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-012",
+      "stationId": "st32",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-013",
+      "stationId": "st32",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-014",
+      "stationId": "st32",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-015",
+      "stationId": "st32",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-016",
+      "stationId": "st32",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-017",
+      "stationId": "st32",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st32-bike-018",
+      "stationId": "st32",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-001",
+      "stationId": "st33",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-002",
+      "stationId": "st33",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-003",
+      "stationId": "st33",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-004",
+      "stationId": "st33",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-005",
+      "stationId": "st33",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-006",
+      "stationId": "st33",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-007",
+      "stationId": "st33",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st33-bike-008",
+      "stationId": "st33",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-009",
+      "stationId": "st33",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-010",
+      "stationId": "st33",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-011",
+      "stationId": "st33",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-012",
+      "stationId": "st33",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-013",
+      "stationId": "st33",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-014",
+      "stationId": "st33",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-015",
+      "stationId": "st33",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st33-bike-016",
+      "stationId": "st33",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-001",
+      "stationId": "st34",
+      "index": 1,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-002",
+      "stationId": "st34",
+      "index": 2,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-003",
+      "stationId": "st34",
+      "index": 3,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-004",
+      "stationId": "st34",
+      "index": 4,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-005",
+      "stationId": "st34",
+      "index": 5,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-006",
+      "stationId": "st34",
+      "index": 6,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-007",
+      "stationId": "st34",
+      "index": 7,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-008",
+      "stationId": "st34",
+      "index": 8,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-009",
+      "stationId": "st34",
+      "index": 9,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-010",
+      "stationId": "st34",
+      "index": 10,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-011",
+      "stationId": "st34",
+      "index": 11,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-012",
+      "stationId": "st34",
+      "index": 12,
+      "isAvailable": true
+    },
+    {
+      "id": "st34-bike-013",
+      "stationId": "st34",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-014",
+      "stationId": "st34",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-015",
+      "stationId": "st34",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-016",
+      "stationId": "st34",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-017",
+      "stationId": "st34",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-018",
+      "stationId": "st34",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-019",
+      "stationId": "st34",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-020",
+      "stationId": "st34",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-021",
+      "stationId": "st34",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-022",
+      "stationId": "st34",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-023",
+      "stationId": "st34",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st34-bike-024",
+      "stationId": "st34",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-001",
+      "stationId": "st35",
+      "index": 1,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-002",
+      "stationId": "st35",
+      "index": 2,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-003",
+      "stationId": "st35",
+      "index": 3,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-004",
+      "stationId": "st35",
+      "index": 4,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-005",
+      "stationId": "st35",
+      "index": 5,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-006",
+      "stationId": "st35",
+      "index": 6,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-007",
+      "stationId": "st35",
+      "index": 7,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-008",
+      "stationId": "st35",
+      "index": 8,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-009",
+      "stationId": "st35",
+      "index": 9,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-010",
+      "stationId": "st35",
+      "index": 10,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-011",
+      "stationId": "st35",
+      "index": 11,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-012",
+      "stationId": "st35",
+      "index": 12,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-013",
+      "stationId": "st35",
+      "index": 13,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-014",
+      "stationId": "st35",
+      "index": 14,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-015",
+      "stationId": "st35",
+      "index": 15,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-016",
+      "stationId": "st35",
+      "index": 16,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-017",
+      "stationId": "st35",
+      "index": 17,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-018",
+      "stationId": "st35",
+      "index": 18,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-019",
+      "stationId": "st35",
+      "index": 19,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-020",
+      "stationId": "st35",
+      "index": 20,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-021",
+      "stationId": "st35",
+      "index": 21,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-022",
+      "stationId": "st35",
+      "index": 22,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-023",
+      "stationId": "st35",
+      "index": 23,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-024",
+      "stationId": "st35",
+      "index": 24,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-025",
+      "stationId": "st35",
+      "index": 25,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-026",
+      "stationId": "st35",
+      "index": 26,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-027",
+      "stationId": "st35",
+      "index": 27,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-028",
+      "stationId": "st35",
+      "index": 28,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-029",
+      "stationId": "st35",
+      "index": 29,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-030",
+      "stationId": "st35",
+      "index": 30,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-031",
+      "stationId": "st35",
+      "index": 31,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-032",
+      "stationId": "st35",
+      "index": 32,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-033",
+      "stationId": "st35",
+      "index": 33,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-034",
+      "stationId": "st35",
+      "index": 34,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-035",
+      "stationId": "st35",
+      "index": 35,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-036",
+      "stationId": "st35",
+      "index": 36,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-037",
+      "stationId": "st35",
+      "index": 37,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-038",
+      "stationId": "st35",
+      "index": 38,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-039",
+      "stationId": "st35",
+      "index": 39,
+      "isAvailable": false
+    },
+    {
+      "id": "st35-bike-040",
+      "stationId": "st35",
+      "index": 40,
+      "isAvailable": false
+    }
+  ]
+}

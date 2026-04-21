@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.1.5+1
   flutter_map: ^8.2.2
   latlong2: ^0.9.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/data/mock_data.json
 
   fonts:
     - family: NotoSans

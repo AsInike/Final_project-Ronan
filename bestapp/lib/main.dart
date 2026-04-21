@@ -4,18 +4,27 @@ import 'package:provider/provider.dart';
 import 'core/constants/colors.dart';
 import 'routes/app_routes.dart';
 import 'services/app_state.dart';
+import 'services/app_seed_data.dart';
+import 'services/mock_data_service.dart';
 
-void main() {
-  runApp(const UrbanPulseApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final seedData = await MockDataService.loadSeedData();
+  runApp(UrbanPulseApp(seedData: seedData));
 }
 
 class UrbanPulseApp extends StatelessWidget {
-  const UrbanPulseApp({super.key});
+  const UrbanPulseApp({
+    required this.seedData,
+    super.key,
+  });
+
+  final AppSeedData seedData;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AppState(),
+      create: (_) => AppState.fromSeedData(seedData),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'UrbanPulse',

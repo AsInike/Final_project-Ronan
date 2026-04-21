@@ -3,13 +3,13 @@ import 'package:flutter/foundation.dart';
 import '../models/pass_plan.dart';
 import '../models/station.dart';
 import '../models/user.dart';
-import 'mock_data_service.dart';
+import 'app_seed_data.dart';
 
 class AppState extends ChangeNotifier {
-  AppState()
-      : _stations = MockDataService.getStations(),
-        _user = MockDataService.getUser(),
-        _passPlans = MockDataService.getPassPlans() {
+  AppState.fromSeedData(AppSeedData seedData)
+      : _stations = seedData.stations,
+        _user = seedData.user,
+        _passPlans = seedData.passPlans {
     _selectedStation = _stations.first;
     _selectedPassPlan = _passPlans.firstWhere(
       (plan) => plan.id == 'day-pass',

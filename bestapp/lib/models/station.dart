@@ -7,8 +7,6 @@ class Station {
     required this.address,
     required this.latitude,
     required this.longitude,
-    required this.totalSlots,
-    required this.availableBikes,
     required this.slots,
   });
 
@@ -17,7 +15,12 @@ class Station {
   final String address;
   final double latitude;
   final double longitude;
-  final int totalSlots;
-  final int availableBikes;
   final List<BikeSlotModel> slots;
+
+  int get totalSlots => slots.length;
+
+  int get availableBikes =>
+      slots.where((slot) => slot.status == BikeSlotStatus.available).length;
+
+  int get unavailableBikes => totalSlots - availableBikes;
 }

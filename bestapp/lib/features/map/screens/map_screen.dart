@@ -30,13 +30,13 @@ class _MapScreenState extends State<MapScreen> {
     final stationsData = context.select((AppState state) => state.stations);
     final stations = stationsData
         .where(
-          (station) => station.name
-              .toLowerCase()
-              .contains(_searchController.text.trim().toLowerCase()),
+          (station) => station.name.toLowerCase().contains(
+            _searchController.text.trim().toLowerCase(),
+          ),
         )
         .toList();
 
-      final center = stations.isNotEmpty
+    final center = stations.isNotEmpty
         ? LatLng(stations.first.latitude, stations.first.longitude)
         : const LatLng(37.7749, -122.4194);
 
@@ -51,11 +51,17 @@ class _MapScreenState extends State<MapScreen> {
               color: AppColors.surface,
               child: Row(
                 children: [
-                  const Icon(Icons.menu, size: 18, color: AppColors.textPrimary),
+                  const Icon(
+                    Icons.menu,
+                    size: 18,
+                    color: AppColors.textPrimary,
+                  ),
                   const SizedBox(width: 8),
                   Text(
                     'UrbanPulse',
-                    style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w700),
+                    style: AppTextStyles.body.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                   const Spacer(),
                   Container(
@@ -65,7 +71,11 @@ class _MapScreenState extends State<MapScreen> {
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(999),
                     ),
-                    child: const Icon(Icons.person, size: 16, color: AppColors.textPrimary),
+                    child: const Icon(
+                      Icons.person,
+                      size: 16,
+                      color: AppColors.textPrimary,
+                    ),
                   ),
                 ],
               ),
@@ -96,28 +106,37 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                         children: [
                           TileLayer(
-                            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                            userAgentPackageName: 'com.example.bestapp',
+                            urlTemplate:
+                                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                            userAgentPackageName: 'G2.T9.bestapp',
                           ),
                           MarkerLayer(
                             markers: stations
                                 .map(
                                   (station) => Marker(
-                                    point: LatLng(station.latitude, station.longitude),
+                                    point: LatLng(
+                                      station.latitude,
+                                      station.longitude,
+                                    ),
                                     width: 54,
                                     height: 28,
                                     child: GestureDetector(
                                       onTap: () {
                                         final state = context.read<AppState>();
                                         state.selectStation(station);
-                                        Navigator.pushNamed(context, AppRoutes.stationDetail);
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.stationDetail,
+                                        );
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: station.availableBikes == 0
                                               ? AppColors.lightOrange
                                               : AppColors.primary,
-                                          borderRadius: BorderRadius.circular(999),
+                                          borderRadius: BorderRadius.circular(
+                                            999,
+                                          ),
                                           boxShadow: const [
                                             BoxShadow(
                                               color: Color(0x22000000),
@@ -126,21 +145,30 @@ class _MapScreenState extends State<MapScreen> {
                                             ),
                                           ],
                                         ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 6,
+                                        ),
                                         child: Row(
                                           children: [
-                                            const Icon(Icons.pedal_bike, size: 12, color: AppColors.textPrimary),
+                                            const Icon(
+                                              Icons.pedal_bike,
+                                              size: 12,
+                                              color: AppColors.textPrimary,
+                                            ),
                                             const SizedBox(width: 2),
                                             Expanded(
                                               child: Text(
                                                 '${station.availableBikes}',
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
-                                                style: AppTextStyles.caption.copyWith(
-                                                  color: AppColors.textPrimary,
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 10,
-                                                ),
+                                                style: AppTextStyles.caption
+                                                    .copyWith(
+                                                      color:
+                                                          AppColors.textPrimary,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 10,
+                                                    ),
                                               ),
                                             ),
                                           ],
@@ -196,14 +224,19 @@ class _MapScreenState extends State<MapScreen> {
                       right: 12,
                       bottom: 12,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.surface.withValues(alpha: 0.9),
                           borderRadius: BorderRadius.circular(999),
                         ),
                         child: Text(
                           '${stations.length} stations',
-                          style: AppTextStyles.caption.copyWith(fontWeight: FontWeight.w700),
+                          style: AppTextStyles.caption.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
@@ -211,7 +244,10 @@ class _MapScreenState extends State<MapScreen> {
                       left: 12,
                       bottom: 12,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.surface.withValues(alpha: 0.9),
                           borderRadius: BorderRadius.circular(8),
