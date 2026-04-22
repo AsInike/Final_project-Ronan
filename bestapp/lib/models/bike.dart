@@ -15,6 +15,4 @@ class BikeSlotModel {
   final String stationId;
   final int index;
   final BikeSlotStatus status;
-
-  bool get isAvailable => status == BikeSlotStatus.available;
 }

@@ -7,19 +7,25 @@ import '../../../core/widgets/bottom_nav_bar.dart';
 import '../../../core/widgets/custom_app_bar.dart';
 import '../../../routes/app_routes.dart';
 import '../../../services/app_state.dart';
+import '../viewmodels/profile_view_model.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AppState>();
-    final user = state.user;
+    final appState = context.read<AppState>();
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const CustomAppBar(title: 'User Profile'),
-      body: SingleChildScrollView(
+    return ChangeNotifierProvider(
+      create: (_) => ProfileViewModel(appState),
+      child: Consumer<ProfileViewModel>(
+        builder: (context, viewModel, _) {
+          final user = viewModel.user;
+
+          return Scaffold(
+            backgroundColor: AppColors.background,
+            appBar: const CustomAppBar(title: 'User Profile'),
+            body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 10, 16, 4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +138,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Urban Explorer Day Pass', style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w700)),
+                        Text(viewModel.activePassLabel, style: AppTextStyles.body.copyWith(fontWeight: FontWeight.w700)),
                         Text('Active subscription', style: AppTextStyles.caption),
                       ],
                     ),
@@ -148,7 +154,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 12),
             _SectionHeader(title: 'Recent Trips', action: 'VIEW ALL'),
             const SizedBox(height: 8),
-            ...user.recentTrips.take(2).map(
+            ...viewModel.previewTrips.map(
                   (trip) => Container(
                     margin: const EdgeInsets.only(bottom: 8),
                     padding: const EdgeInsets.all(10),
@@ -189,11 +195,14 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: 3,
-        onTap: (index) {
-          state.setCurrentNavIndex(index);
-          AppRoutes.navigateByTab(context, index);
+            bottomNavigationBar: BottomNavBar(
+              currentIndex: 3,
+              onTap: (index) {
+                appState.setCurrentNavIndex(index);
+                AppRoutes.navigateByTab(context, index);
+              },
+            ),
+          );
         },
       ),
     );

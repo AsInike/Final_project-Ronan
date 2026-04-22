@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/widgets/bottom_nav_bar.dart';
@@ -11,6 +10,7 @@ import '../../../core/widgets/custom_button.dart';
 import '../../../models/pass_plan.dart';
 import '../../../routes/app_routes.dart';
 import '../../../services/app_state.dart';
+import '../viewmodels/payment_screen_view_model.dart';
 import '../widgets/payment_card.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -28,9 +28,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _expiryController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
+  late final PaymentScreenViewModel _viewModel;
 
-  int _step = 0;
-  bool _isPassFlow = false;
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = PaymentScreenViewModel(context.read<AppState>());
+  }
 
   @override
   void dispose() {
@@ -78,55 +82,57 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AppState>();
-    final passPlans = state.passPlans.where((plan) => plan.id != 'single-ride').toList();
-    final title = _step == 0
-        ? 'Choose Ride Type'
-        : _step == 1
-            ? 'Choose Pass'
-            : 'Payment Info';
+    return ChangeNotifierProvider<PaymentScreenViewModel>.value(
+      value: _viewModel,
+      child: Consumer<PaymentScreenViewModel>(
+        builder: (context, viewModel, _) {
+          final state = context.watch<AppState>();
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: CustomAppBar(
-        title: title,
-        showBackButton: true,
-      ),
-      body: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          return Scaffold(
+            backgroundColor: AppColors.background,
+            appBar: CustomAppBar(
+              title: viewModel.title,
+              showBackButton: true,
+            ),
+            body: SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 10, 16, 6),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _StepIndicator(currentStep: viewModel.step),
+                      const SizedBox(height: 14),
+                      Expanded(child: _buildStepContent(state, viewModel)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            bottomNavigationBar: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                _StepIndicator(currentStep: _step),
-                const SizedBox(height: 14),
-                Expanded(child: _buildStepContent(state, passPlans)),
+                if (viewModel.step == 1)
+                  _buildPassStepActionBar(viewModel),
+                BottomNavBar(
+                  currentIndex: 2,
+                  onTap: (index) {
+                    state.setCurrentNavIndex(index);
+                    AppRoutes.navigateByTab(context, index);
+                  },
+                ),
               ],
             ),
-          ),
-        ),
-      ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (_step == 1) _buildPassStepActionBar(),
-          BottomNavBar(
-            currentIndex: 2,
-            onTap: (index) {
-              state.setCurrentNavIndex(index);
-              AppRoutes.navigateByTab(context, index);
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildStepContent(AppState state, List<PassPlan> passPlans) {
-    if (_step == 0) {
+  Widget _buildStepContent(AppState state, PaymentScreenViewModel viewModel) {
+    if (viewModel.step == 0) {
       return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,13 +146,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 Expanded(
                   child: PaymentCard(
                     title: 'Single Ride',
-                    subtitle: '\$${AppConstants.singleRidePrice.toStringAsFixed(2)}',
-                    isSelected: !_isPassFlow,
-                    onTap: () {
-                      setState(() {
-                        _isPassFlow = false;
-                      });
-                    },
+                    subtitle: viewModel.singleRidePriceLabel,
+                    isSelected: !viewModel.isPassFlow,
+                    onTap: () => viewModel.chooseRideType(passFlow: false),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -154,32 +156,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   child: PaymentCard(
                     title: 'Pass',
                     subtitle: state.selectedPassPlan.billingCycle,
-                    isSelected: _isPassFlow,
-                    onTap: () {
-                      setState(() {
-                        _isPassFlow = true;
-                      });
-                    },
+                    isSelected: viewModel.isPassFlow,
+                    onTap: () => viewModel.chooseRideType(passFlow: true),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
             CustomButton(
-              label: _isPassFlow ? 'Continue To Pass View' : 'Continue To Payment',
+              label: viewModel.isPassFlow
+                  ? 'Continue To Pass View'
+                  : 'Continue To Payment',
               icon: Icons.arrow_forward,
-              onPressed: () {
-                setState(() {
-                  _step = _isPassFlow ? 1 : 2;
-                });
-              },
+              onPressed: viewModel.continueFromRideType,
             ),
           ],
         ),
       );
     }
 
-    if (_step == 1) {
+    if (viewModel.step == 1) {
+      final passPlans = viewModel.passPlans;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -191,9 +188,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: ListView.separated(
               padding: const EdgeInsets.only(bottom: 12),
               itemCount: passPlans.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 8),
+              separatorBuilder: (_, index) => const SizedBox(height: 8),
               itemBuilder: (context, index) {
-                final plan = passPlans[index];
+                final PassPlan plan = passPlans[index];
                 return PaymentCard(
                   title: plan.name,
                   subtitle: '${plan.billingCycle} - \$${plan.priceUsd.toStringAsFixed(2)}',
@@ -292,7 +289,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     FilteringTextInputFormatter.digitsOnly,
                     LengthLimitingTextInputFormatter(3),
                   ],
-                  validator: (value) => RegExp(r'^\d{3}$').hasMatch(value ?? '') ? null : 'Invalid CVV',
+                  validator: (value) => RegExp(r'^\d{3}$').hasMatch(value ?? '')
+                      ? null
+                      : 'Invalid CVV',
                 ),
               ),
             ],
@@ -329,7 +328,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               children: [
                 Text('Total Amount', style: AppTextStyles.caption),
                 Text(
-                  '\$${(_isPassFlow ? state.totalPrice : AppConstants.singleRidePrice).toStringAsFixed(2)}',
+                  '\$${viewModel.totalAmount.toStringAsFixed(2)}',
                   style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
                 ),
               ],
@@ -342,11 +341,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 child: CustomButton(
                   label: 'Back',
                   icon: Icons.arrow_back,
-                  onPressed: () {
-                    setState(() {
-                      _step = _isPassFlow ? 1 : 0;
-                    });
-                  },
+                  onPressed: viewModel.backFromPayment,
                 ),
               ),
               const SizedBox(width: 8),
@@ -375,7 +370,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  Widget _buildPassStepActionBar() {
+  Widget _buildPassStepActionBar(PaymentScreenViewModel viewModel) {
     return SafeArea(
       top: false,
       bottom: false,
@@ -385,7 +380,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         margin: const EdgeInsets.only(top: 4),
         decoration: BoxDecoration(
           color: AppColors.background,
-          border: Border(top: BorderSide(color: AppColors.border.withOpacity(0.5))),
+          border: Border(top: BorderSide(color: AppColors.border.withValues(alpha: 0.5))),
         ),
         child: Row(
           children: [
@@ -393,11 +388,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: CustomButton(
                 label: 'Back',
                 icon: Icons.arrow_back,
-                onPressed: () {
-                  setState(() {
-                    _step = 0;
-                  });
-                },
+                onPressed: viewModel.backFromPassSelection,
               ),
             ),
             const SizedBox(width: 10),
@@ -405,11 +396,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: CustomButton(
                 icon: Icons.arrow_forward,
                 label: 'Continue',
-                onPressed: () {
-                  setState(() {
-                    _step = 2;
-                  });
-                },
+                onPressed: viewModel.continueFromPassSelection,
               ),
             ),
           ],

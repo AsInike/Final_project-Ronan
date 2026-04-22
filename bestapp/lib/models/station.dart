@@ -16,11 +16,4 @@ class Station {
   final double latitude;
   final double longitude;
   final List<BikeSlotModel> slots;
-
-  int get totalSlots => slots.length;
-
-  int get availableBikes =>
-      slots.where((slot) => slot.status == BikeSlotStatus.available).length;
-
-  int get unavailableBikes => totalSlots - availableBikes;
 }

@@ -9,21 +9,27 @@ import '../../../core/widgets/custom_button.dart';
 import '../../../models/bike.dart';
 import '../../../routes/app_routes.dart';
 import '../../../services/app_state.dart';
+import '../viewmodels/station_detail_view_model.dart';
 
 class StationDetailScreen extends StatelessWidget {
   const StationDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<AppState>();
-    final station = state.selectedStation;
-    final hasAvailableBikes = station.availableBikes > 0;
-    final totalRows = (station.slots.length + 1) ~/ 2;
+    final appState = context.read<AppState>();
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const CustomAppBar(title: 'Station Detail', showBackButton: true),
-      body: SafeArea(
+    return ChangeNotifierProvider(
+      create: (_) => StationDetailViewModel(appState),
+      child: Consumer<StationDetailViewModel>(
+        builder: (context, viewModel, _) {
+          final station = viewModel.station;
+          final hasAvailableBikes = viewModel.hasAvailableBikes;
+          final totalRows = viewModel.totalRows;
+
+          return Scaffold(
+            backgroundColor: AppColors.background,
+            appBar: const CustomAppBar(title: 'Station Detail', showBackButton: true),
+            body: SafeArea(
         top: false,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
@@ -46,7 +52,7 @@ class StationDetailScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         RichText(
                           text: TextSpan(
-                            text: '${station.availableBikes} / ${station.totalSlots}',
+                            text: viewModel.capacityLabel,
                             style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
                             children: [
                               TextSpan(
@@ -132,27 +138,30 @@ class StationDetailScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
-            child: CustomButton(
-              label: 'Rent Now',
-              icon: Icons.electric_bike,
-              onPressed: hasAvailableBikes
-                  ? () => Navigator.pushNamed(context, AppRoutes.payment)
-                  : null,
+            bottomNavigationBar: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
+                  child: CustomButton(
+                    label: 'Rent Now',
+                    icon: Icons.electric_bike,
+                    onPressed: hasAvailableBikes
+                        ? () => Navigator.pushNamed(context, AppRoutes.payment)
+                        : null,
+                  ),
+                ),
+                BottomNavBar(
+                  currentIndex: 1,
+                  onTap: (index) {
+                    appState.setCurrentNavIndex(index);
+                    AppRoutes.navigateByTab(context, index);
+                  },
+                ),
+              ],
             ),
-          ),
-          BottomNavBar(
-            currentIndex: 1,
-            onTap: (index) {
-              state.setCurrentNavIndex(index);
-              AppRoutes.navigateByTab(context, index);
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
