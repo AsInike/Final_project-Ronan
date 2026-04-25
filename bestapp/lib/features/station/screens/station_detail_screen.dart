@@ -189,7 +189,10 @@ class StationDetailScreen extends StatelessWidget {
                     label: 'Rent Now',
                     icon: Icons.electric_bike,
                     onPressed: hasAvailableBikes
-                        ? () => Navigator.pushNamed(context, AppRoutes.payment)
+                        ? () {
+                            appState.startRentFlow();
+                            Navigator.pushNamed(context, AppRoutes.payment);
+                          }
                         : null,
                   ),
                 ),

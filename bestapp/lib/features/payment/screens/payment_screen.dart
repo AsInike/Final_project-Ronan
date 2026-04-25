@@ -115,7 +115,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (viewModel.step == 1)
-                  _buildPassStepActionBar(viewModel),
+                  _buildPassStepActionBar(
+                    viewModel,
+                    canContinuePaymentFlow: state.canContinuePaymentFlow,
+                  ),
                 BottomNavBar(
                   currentIndex: 2,
                   onTap: (index) {
@@ -132,6 +135,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   Widget _buildStepContent(AppState state, PaymentScreenViewModel viewModel) {
+    final canContinuePaymentFlow = state.canContinuePaymentFlow;
+
     if (viewModel.step == 0) {
       return SingleChildScrollView(
         child: Column(
@@ -168,8 +173,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ? 'Continue To Pass View'
                   : 'Continue To Payment',
               icon: Icons.arrow_forward,
-              onPressed: viewModel.continueFromRideType,
+              onPressed:
+                  canContinuePaymentFlow ? viewModel.continueFromRideType : null,
             ),
+            if (!canContinuePaymentFlow) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Select a station and tap Rent Now before continuing payment.',
+                style: AppTextStyles.caption.copyWith(color: AppColors.orange),
+              ),
+            ],
           ],
         ),
       );
@@ -370,7 +383,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-  Widget _buildPassStepActionBar(PaymentScreenViewModel viewModel) {
+  Widget _buildPassStepActionBar(
+    PaymentScreenViewModel viewModel, {
+    required bool canContinuePaymentFlow,
+  }) {
     return SafeArea(
       top: false,
       bottom: false,
@@ -396,7 +412,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: CustomButton(
                 icon: Icons.arrow_forward,
                 label: 'Continue',
-                onPressed: viewModel.continueFromPassSelection,
+                onPressed: canContinuePaymentFlow
+                    ? viewModel.continueFromPassSelection
+                    : null,
               ),
             ),
           ],
