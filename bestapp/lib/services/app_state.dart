@@ -18,7 +18,7 @@ class AppState extends ChangeNotifier {
   }
 
   final List<Station> _stations;
-  final UrbanUser _user;
+  UrbanUser _user;
   final List<PassPlan> _passPlans;
 
   late Station _selectedStation;
@@ -55,6 +55,11 @@ class AppState extends ChangeNotifier {
       return;
     }
     _currentNavIndex = index;
+    notifyListeners();
+  }
+
+  void recordRide() {
+    _user = _user.copyWith(totalRides: _user.totalRides + 1);
     notifyListeners();
   }
 }
