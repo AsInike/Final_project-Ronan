@@ -24,6 +24,8 @@ class AppState extends ChangeNotifier {
   late Station _selectedStation;
   late PassPlan _selectedPassPlan;
   int _currentNavIndex = 0;
+  bool _hasSelectedStationForBooking = false;
+  bool _hasStartedRentFlow = false;
 
   List<Station> get stations => _stations;
   UrbanUser get user => _user;
@@ -31,14 +33,32 @@ class AppState extends ChangeNotifier {
   Station get selectedStation => _selectedStation;
   PassPlan get selectedPassPlan => _selectedPassPlan;
   int get currentNavIndex => _currentNavIndex;
+  bool get hasSelectedStationForBooking => _hasSelectedStationForBooking;
+  bool get hasStartedRentFlow => _hasStartedRentFlow;
+  bool get canContinuePaymentFlow =>
+      _hasSelectedStationForBooking && _hasStartedRentFlow;
 
   double get totalPrice => _selectedPassPlan.priceUsd;
 
   void selectStation(Station station) {
     if (_selectedStation.id == station.id) {
+      if (_hasSelectedStationForBooking) {
+        return;
+      }
+      _hasSelectedStationForBooking = true;
       return;
     }
     _selectedStation = station;
+    _hasSelectedStationForBooking = true;
+    _hasStartedRentFlow = false;
+    notifyListeners();
+  }
+
+  void startRentFlow() {
+    if (!_hasSelectedStationForBooking || _hasStartedRentFlow) {
+      return;
+    }
+    _hasStartedRentFlow = true;
     notifyListeners();
   }
 
@@ -60,6 +80,7 @@ class AppState extends ChangeNotifier {
 
   void recordRide() {
     _user = _user.copyWith(totalRides: _user.totalRides + 1);
+    _hasStartedRentFlow = false;
     notifyListeners();
   }
 }
