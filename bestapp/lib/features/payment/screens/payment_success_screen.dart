@@ -104,6 +104,7 @@ class PaymentSuccessScreen extends StatelessWidget {
                     label: 'Confirm Bike Booking',
                     icon: Icons.pedal_bike,
                     onPressed: () {
+                      state.recordRide();
                       state.setCurrentNavIndex(3);
                       Navigator.pushNamedAndRemoveUntil(
                         context,

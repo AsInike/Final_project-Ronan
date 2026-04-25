@@ -28,116 +28,158 @@ class StationDetailScreen extends StatelessWidget {
 
           return Scaffold(
             backgroundColor: AppColors.background,
-            appBar: const CustomAppBar(title: 'Station Detail', showBackButton: true),
+            appBar: CustomAppBar(title: station.name, showBackButton: true),
             body: SafeArea(
-        top: false,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE9ECEE),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Row(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('CAPACITY', style: AppTextStyles.caption.copyWith(fontSize: 9)),
-                        const SizedBox(height: 4),
-                        RichText(
-                          text: TextSpan(
-                            text: viewModel.capacityLabel,
-                            style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: AppColors.surface,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: AppColors.border),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 42,
+                            height: 42,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            child: const Icon(Icons.pedal_bike, size: 20),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Station Name',
+                                  style: AppTextStyles.caption.copyWith(fontSize: 9),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  station.name,
+                                  style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(station.address, style: AppTextStyles.caption),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE9ECEE),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextSpan(
-                                text: ' slots available',
-                                style: AppTextStyles.caption.copyWith(fontSize: 10),
+                              Text('CAPACITY', style: AppTextStyles.caption.copyWith(fontSize: 9)),
+                              const SizedBox(height: 4),
+                              RichText(
+                                text: TextSpan(
+                                  text: viewModel.capacityLabel,
+                                  style: AppTextStyles.heading.copyWith(fontWeight: FontWeight.w700),
+                                  children: [
+                                    TextSpan(
+                                      text: ' slots available',
+                                      style: AppTextStyles.caption.copyWith(fontSize: 10),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        borderRadius: BorderRadius.circular(999),
+                          const Spacer(),
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                            child: const Icon(Icons.pedal_bike, size: 16),
+                          ),
+                        ],
                       ),
-                      child: const Icon(Icons.pedal_bike, size: 16),
+                    ),
+                    const SizedBox(height: 16),
+                    Text('Bike Station', style: AppTextStyles.heading),
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.surface,
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                        child: Column(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 8),
+                              child: Text('Bike Slots Top view', style: AppTextStyles.caption),
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                itemCount: totalRows,
+                                itemBuilder: (context, row) {
+                                  final left = station.slots[row * 2];
+                                  final BikeSlotModel? right = row * 2 + 1 < station.slots.length
+                                      ? station.slots[row * 2 + 1]
+                                      : null;
+
+                                  return Container(
+                                    height: 40,
+                                    decoration: const BoxDecoration(
+                                      border: Border(
+                                        top: BorderSide(color: AppColors.textPrimary, width: 1),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: _TableBikeCell(slot: left),
+                                        ),
+                                        const VerticalDivider(
+                                          width: 1,
+                                          thickness: 1,
+                                          color: AppColors.textPrimary,
+                                        ),
+                                        Expanded(
+                                          child: right != null
+                                              ? _TableBikeCell(slot: right)
+                                              : const SizedBox.shrink(),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
-              Text('Bike Station', style: AppTextStyles.heading),
-              const SizedBox(height: 8),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.surface,
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 8),
-                        child: Text('Bike Slots Top view', style: AppTextStyles.caption),
-                      ),
-                      Expanded(
-                        child: ListView.builder(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          itemCount: totalRows,
-                          itemBuilder: (context, row) {
-                            final left = station.slots[row * 2];
-                            final BikeSlotModel? right = row * 2 + 1 < station.slots.length
-                                ? station.slots[row * 2 + 1]
-                                : null;
-
-                            return Container(
-                              height: 40,
-                              decoration: const BoxDecoration(
-                                border: Border(
-                                  top: BorderSide(color: AppColors.textPrimary, width: 1),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: _TableBikeCell(slot: left),
-                                  ),
-                                  const VerticalDivider(
-                                    width: 1,
-                                    thickness: 1,
-                                    color: AppColors.textPrimary,
-                                  ),
-                                  Expanded(
-                                    child: right != null
-                                        ? _TableBikeCell(slot: right)
-                                        : const SizedBox.shrink(),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
             bottomNavigationBar: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
